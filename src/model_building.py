@@ -30,7 +30,6 @@ file_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
-
 def load_model(file_path: str):
     """Load the trained model from a file."""
     try:
@@ -96,7 +95,6 @@ def save_metrics(metrics: dict, file_path: str) -> None:
 
 def main():
     try:
-       
         clf = load_model('./models/model.pkl')
         test_data = load_data('./data/processed/test_tfidf.csv')
         
@@ -105,8 +103,7 @@ def main():
 
         metrics = evaluate_model(clf, X_test, y_test)
 
-        # Experiment tracking using dvclive
-        
+       
         save_metrics(metrics, 'reports/metrics.json')
     except Exception as e:
         logger.error('Failed to complete the model evaluation process: %s', e)
